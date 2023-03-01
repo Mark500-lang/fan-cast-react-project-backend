@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_28_033033) do
+ActiveRecord::Schema.define(version: 2023_03_01_040242) do
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.text "release_date"
+    t.string "starring"
+    t.string "quote"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer "score"

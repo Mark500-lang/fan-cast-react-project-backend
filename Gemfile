@@ -40,6 +40,7 @@ gem "puma"
 group :development do
   gem "pry", "~> 0.14.1"
 
+  gem 'faker'
   # Automatically reload when there are changes
   # https://github.com/alexch/rerun
   gem "rerun"
