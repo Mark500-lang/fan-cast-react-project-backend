@@ -1,9 +1,14 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController 
     get "/users" do
         users = User.all
-        users.to_json
+        users.to_json(include: :reviews)
+    end
+    get "/users/:id" do
+        user = User.find(params[:id])
+        user.to_json(include: :reviews)
     end
 
+    #post new users
     post "/users" do 
         user_name = params[:myusername]
         email= params[:myemail]
@@ -14,8 +19,7 @@ class UsersController < ApplicationController
                 
                 if check_username_exists < 1
                     #check uniqueness of email
-                    check_email_exists = User.where(email: email).count() #Integer 2,3,4,5
-                    puts("XXXXXXXXXXXXXXXXX ", check_email_exists)
+                    check_email_exists = User.where(email: email).count()
 
                     if check_email_exists < 1
                         user = User.create(username: user_name, email: email)
