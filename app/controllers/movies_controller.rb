@@ -4,8 +4,8 @@ class MoviesController < ApplicationController
         movies.to_json(include: [:users, :reviews])
     end
 
-    get "/movies/:id" do
-        movie = Movie.find(params[:id])
+    get "/movies/:title" do
+        movie = Movie.find_by(title: params[:title])
         movie.to_json(include: :reviews)
     end
 
